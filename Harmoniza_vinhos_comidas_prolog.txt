@@ -1,0 +1,126 @@
+% VINHOS
+
+seco_branco(sauvignon_blanc).
+seco_branco(pinot_grigio).
+seco_branco(albanino).
+seco_branco(vinho_branco_mesa).
+
+doce_branco(malvasia).
+doce_branco(moscato).
+doce_branco(biesling).
+
+rico_branco(chardonnay).
+rico_branco(boussanne).
+rico_branco(marsanne).
+rico_branco(viognir).
+
+frisante(vinho_frisante).
+frisante(champagne).
+frisante(procecco).
+frisante(cava).
+
+suave_tinto(st_laurent).
+suave_tinto(pinot_noir).
+suave_tinto(gamary).
+
+demisec_tinto(vinho_tinto_mesa).
+demisec_tinto(tempranillo).
+demisec_tinto(sangiovese).
+demisec_tinto(grenache).
+demisec_tinto(merlot).
+
+seco_tinto(cabernet_sauvignon).
+seco_tinto(monastrell).
+seco_tinto(aglianico).
+seco_tinto(malbec).
+seco_tinto(sirah).
+
+sobremesa(colheita_tardia).
+sobremesa(sherry).
+sobremesa(porto).
+
+% TIPOS DE COMIDAS
+
+vegetais(tomate).
+vegetais(alface).
+vegetais(cenoura).
+
+vegetais_cozidos(brocolis_cozido).
+vegetais_cozidos(couveflor_cozido).
+vegetais_cozidos(cenoura_cozido).
+
+queijos_macios(brie).
+queijos_macios(mozzarela).
+
+queijos_duros(suico).
+queijos_duros(parmesao).
+
+carboidratos(spaghetti).
+carboidratos(gnocchi).
+carboidratos(conchinha).
+carboidratos(penne).
+
+peixes(atum).
+peixes(salmao).
+peixes(tilapia).
+peixes(merluza).
+
+crustaceos(camarao).
+crustaceos(lagosta).
+crustaceos(siri).
+
+carnes_brancas(frango).
+carnes_brancas(peru).
+carnes_brancas(pato).
+
+carnes_vermelhas(boi).
+carnes_vermelhas(porco).
+carnes_vermelhas(cordeiro).
+carnes_vermelhas(bode).
+
+embutidos(salame).
+embutidos(mortadela).
+embutidos(presunto).
+embutidos(linguica).
+
+doces(bolo).
+doces(cupcake).
+doces(torta).
+doces(pudim).
+doces(mousse).
+
+% REGRAS DE HARMONIZAÇÃO
+harmoniza(X,Y) :- seco_branco(X),vegetais(Y).
+harmoniza(X,Y) :- seco_branco(X),vegetais_cozidos(Y).
+harmoniza(X,Y) :- seco_branco(X),carboidratos(Y).
+harmoniza(X,Y) :- seco_branco(X),peixes(Y).
+harmoniza(X,Y) :- doce_branco(X),queijos_macios(Y).
+harmoniza(X,Y) :- doce_branco(X),queijos_duros(Y).
+harmoniza(X,Y) :- doce_branco(X),embutidos(Y).
+harmoniza(X,Y) :- doce_branco(X),doces(Y).
+harmoniza(X,Y) :- rico_branco(X),queijos_macios(Y).
+harmoniza(X,Y) :- rico_branco(X),carboidratos(Y).
+harmoniza(X,Y) :- rico_branco(X),peixes(Y).
+harmoniza(X,Y) :- rico_branco(X),crustaceos(Y).
+harmoniza(X,Y) :- rico_branco(X),carnes_brancas(Y).
+harmoniza(X,Y) :- frisante(X),vegetais(Y).
+harmoniza(X,Y) :- frisante(X),queijos_macios(Y).
+harmoniza(X,Y) :- frisante(X),queijos_duros(Y).
+harmoniza(X,Y) :- frisante(X),carboidratos(Y).
+harmoniza(X,Y) :- frisante(X),peixes(Y).
+harmoniza(X,Y) :- suave_tinto(X),vegetais_cozidos(Y).
+harmoniza(X,Y) :- suave_tinto(X),carboidratos(Y).
+harmoniza(X,Y) :- suave_tinto(X),crustaceos(Y).
+harmoniza(X,Y) :- suave_tinto(X),carnes_brancas(Y).
+harmoniza(X,Y) :- suave_tinto(X),embutidos(Y).
+harmoniza(X,Y) :- demisec_tinto(X),vegetais_cozidos(Y).
+harmoniza(X,Y) :- demisec_tinto(X),queijos_duros(Y).
+harmoniza(X,Y) :- demisec_tinto(X),carnes_brancas(Y).
+harmoniza(X,Y) :- demisec_tinto(X),carnes_vermelhas(Y).
+harmoniza(X,Y) :- demisec_tinto(X),embutidos(Y).
+harmoniza(X,Y) :- seco_tinto(X),queijos_duros(Y).
+harmoniza(X,Y) :- seco_tinto(X),carnes_vermelhas(Y).
+harmoniza(X,Y) :- seco_tinto(X),embutidos(Y).
+harmoniza(X,Y) :- sobremesa(X),doces(Y).
+harmoniza(X,Y) :- sobremesa(X),embutidos(Y).
+harmoniza(X,Y) :- sobremesa(X),queijos_macios(Y).
